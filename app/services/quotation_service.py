@@ -44,3 +44,6 @@ class QuotationService:
 
         if not quotations:
             raise Exception("No valid quotation retrieved.")
+
+        best = min(quotations, key=lambda q: q.value)
+        return best
