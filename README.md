@@ -100,7 +100,7 @@ tests/
 ### Rodando com Docker compsoe
 1. git clone <URL_DO_REPOSITORIO>
 2. cd currency_quotations
-3. docker-compose up --build
+3. docker compose up --build -d
 
 --- 
 
