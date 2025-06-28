@@ -1,4 +1,4 @@
-# Cotação Amigoz - API de Cotações de Moedas
+# Currency Quotation - API de Cotações de Moedas
 
 
 ## ATENÇÃO
