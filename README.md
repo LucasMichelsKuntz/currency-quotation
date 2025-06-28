@@ -4,7 +4,7 @@
 ## ATENÇÃO
  O projeto a seguir possui um over engineering altíssimo!
  Mas foi feito desta forma para demonstrar as habilidades gerais do programador ;P
- 
+
  ---
 
 ## Sumário
@@ -20,7 +20,7 @@
 
 ## Descrição
 
-Cotação Amigoz é uma API RESTful desenvolvida em FastAPI que oferece cotações atualizadas para moedas como Dólar e Euro. O projeto segue uma arquitetura modular, facilitando manutenção, testes e escalabilidade.
+currency_quotation é uma API RESTful desenvolvida em FastAPI que oferece cotações atualizadas para moedas como Dólar e Euro.
 
 ---
 
@@ -89,13 +89,12 @@ tests/
 2. Docker e Docker Compose
 
 ### Rodando localmente
-git clone <URL_DO_REPOSITORIO>
-cd quotations
-
-python -m venv venv
-source venv/bin/activate   # Linux/macOS
-pip install -r requirements.txt
-uvicorn app.main:app --host 0.0.0.0 --port 8000
+1. git clone <URL_DO_REPOSITORIO>
+2. cd currency_quotations
+3.  python -m venv venv
+4. source venv/bin/activate   # Linux/macOS
+5. pip install -r requirements.txt
+6. uvicorn app.main:app --host 0.0.0.0 --port 8000
 
 ### Rodando com Docker compsoe
 docker-compose up --build
