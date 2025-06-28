@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  app:
+    build:
+      context: .
+      target: ${ENVIRONMENT:-production}
+    ports:
+      - "8000:8000"
+      - "5678:5678"
+    environment:
+      ENVIRONMENT: "dev"
+      DOLLAR_URL: "http://cotacoes-service:3000/cotacao/dolar"
+      EURO_URL: "http://cotacoes-service:3000/cotacao/euro"
+    depends_on:
+      - cotacoes-service
+    networks:
+      - app-network
+
+  cotacoes-service:
+    image: mostela/desafiocotacoes
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
