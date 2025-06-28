@@ -9,7 +9,7 @@ async def test_fetch_success(monkeypatch):
         return httpx.Response(
             status_code=200,
             json={
-                "currency_price": "6.50",
+                "currency_price": "650",
                 "currency_name": "DOLLAR",
                 "currency_kind": "USD",
                 "currency_formatter": "decimal"
@@ -21,6 +21,6 @@ async def test_fetch_success(monkeypatch):
 
     client = DollarClient(base_url="http://fake-url")
     result = await client.fetch()
-    
+
     assert result.currency == "DOLLAR"
     assert result.value == 6.50
