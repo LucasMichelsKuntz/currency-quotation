@@ -15,6 +15,7 @@
 - [Como Rodar o Projeto](#como-rodar-o-projeto)  
 - [Testes](#testes)  
 - [Logging](#logging)  
+- [swagger](http://localhost:8000/docs)
 
 ---
 
@@ -121,10 +122,9 @@ O projeto possui testes com pytest que cobrem:
 - pytest /tests/<CAMINHO_DO_TESTE>
  
 ### Para rodar os testes dentro do container:
-1. docker exect -it currency-quotation-app bash
+1. docker exec -it currency-quotation-app-1 bash
 2. chmod +x run_tests.sh
 3. ./run_tests.sh
-
 
 --- 
 
