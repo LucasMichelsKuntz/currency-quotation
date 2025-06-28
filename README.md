@@ -85,7 +85,7 @@ tests/
 # Como Rodar o Projeto
 
 ### Pré-requisitos
-1. Python 3.13
+1. Python 3.13 - (Opcional, apenas para rodar localmente)
 2. Docker e Docker Compose
 
 ### Rodando localmente
@@ -97,7 +97,9 @@ tests/
 6. uvicorn app.main:app --host 0.0.0.0 --port 8000
 
 ### Rodando com Docker compsoe
-docker-compose up --build
+1. git clone <URL_DO_REPOSITORIO>
+2. cd currency_quotations
+3. docker-compose up --build
 
 --- 
 
@@ -111,10 +113,18 @@ O projeto possui testes com pytest que cobrem:
 
 **Services:** Validam a lógica de negócio e integração dos dados.
 
-### Para rodar os testes:
+### Para rodar os testes localmente:
 - ./run_tests.sh
- 
+
+--          ou
+
 - pytest /tests/<CAMINHO_DO_TESTE>
+ 
+### Para rodar os testes dentro do container:
+1. docker exect -it currency-quotation-app bash
+2. chmod +x run_tests.sh
+3. ./run_tests.sh
+
 
 --- 
 
