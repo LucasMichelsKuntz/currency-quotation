@@ -1,41 +1,15 @@
-from fastapi import FastAPI, Depends
-from app.di import quotation_service_dep
-from app.models.response_model import APIResponse
-from app.services.quotation_service import QuotationService
-from app.utils.logs.execution_logger import log_execution
+from fastapi import FastAPI
+from fastapi.exceptions import RequestValidationError
+from starlette.exceptions import HTTPException as StarletteHTTPException
+from app.routes.quotation import router as quotation_router
+from app.routes.middlewares.logging_middleware import LoggingMiddleware
+
+from app.handlers.generic_handler import generic_exception_handler
 
 app = FastAPI()
 
-@log_execution
-@app.get(
-    "/quotation/best",
-    summary="Obter a melhor cotação",
-    description="Retorna a melhor cotação de moeda disponível pelo serviço de cotações.",
-    responses={
-        200: {
-            "description": "Cotação obtida com sucesso",
-            "content": {
-                "application/json": {
-                    "example": {
-                        "status": "success",
-                        "message": "Cotação obtida com sucesso",
-                        "data": {
-                            "currency": "dollar",
-                            "value": 5.12,
-                            "date": "2025-06-28T19:24:40.357815"                        
-                        }
-                    }
-                }
-            }
-        }
-    }
-)
-async def best_quotation(
-    service: QuotationService = Depends(quotation_service_dep)
-):
-    result = await service.get_best_quotation()
-    return APIResponse(
-        status="success",
-        message="Cotação obtida com sucesso",
-        data=result
-    )
+app.add_middleware(LoggingMiddleware)
+
+app.include_router(quotation_router, prefix='/api/v1')
+
+app.add_exception_handler(Exception, generic_exception_handler)
